@@ -14,6 +14,7 @@
 
 #include <memory>
 #include <stack>
+#include <tuple>
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
@@ -390,21 +391,26 @@ class Trie {
       char ch = key.at(i);
       if (!parent->get()->HasChild(ch)) {
         *success = false;
-        latch_.RUnlock();
-        return {};
+        break;
       }
       if (i != key.length() - 1) {
         parent = parent->get()->GetChildNode(ch);
       } else {
         auto node = parent->get()->GetChildNode(ch);
-        if (node->get()->IsEndNode()) {
+        if (node != nullptr && node->get()->IsEndNode()) {
+          // prevent case
+          // trie a->a->a(1) get "aa"
+          auto value_node = dynamic_cast<TrieNodeWithValue<T> *>(node->get());
+          if (!value_node) {
+            *success = false;
+            break;
+          }
           *success = true;
           latch_.RUnlock();
-          return dynamic_cast<TrieNodeWithValue<T> *>(node->get())->GetValue();
+          return value_node->GetValue();
         }
         *success = false;
-        latch_.RUnlock();
-        return {};
+        break;
       }
     }
     latch_.RUnlock();
