@@ -10,3 +10,5 @@
 - [Videos](https://www.youtube.com/playlist?list=PLSE8ODhjZXjaKScG3l0nuOiDTTqpfnWFf)
 
 ## Experiment branch
+
+- [Lab 0: Cpp Primer](https://github.com/Dmaner/DatabaseTutorial/tree/lab/lab-0-cpp-primer)
