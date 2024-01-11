@@ -11,5 +11,10 @@
 
 ## Experiment branch
 
-- [Lab 0: Cpp Primer](https://github.com/Dmaner/DatabaseTutorial/tree/lab/lab-0-cpp-primer)
-- [Lab 1: Buffer Pool](https://github.com/Dmaner/DatabaseTutorial/tree/lab/lab-1-buffer-pool)
+- lab/lab-0-cpp-primer
+- lab/lab-1-buffer-pool
+
+## Experiment doc
+
+- [Lab 0: Cpp Primer](https://15445.courses.cs.cmu.edu/fall2022/project0/)
+- [Lab 1: Buffer Pool](https://15445.courses.cs.cmu.edu/fall2022/project1/)
